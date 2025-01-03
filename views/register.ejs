@@ -1,0 +1,23 @@
+<%- include ("./partials/head") %>
+<body>
+  
+  <main class="container register">
+	<%- include ("./partials/header") %>
+	<div class="wrapper">
+	 <h1>Реєстрація</h1>
+	 <form action="/auth/register" method="POST">
+	 <label for="name">Ім'я:</label>
+	 <input type="text" id="name" name="name" required />
+	 <label for="email">Email:</label>
+	 <input type="email" id="email" name="email" required />
+	 <label for="password">Пароль:</label>
+	 <input type="password" id="password" name="password" required />
+	 <button type="submit">Зареєструватися</button>
+	 </form>
+	</div>
+ </main>
+  
+  <%- include ("./partials/footer.ejs") %>
+  
+</body>
+</html>

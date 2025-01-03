@@ -1,0 +1,16 @@
+<%- include ("./partials/head") %>
+<body>
+<main class="container">
+ <%- include ("./partials/header") %>
+ <div class="wrapper">
+ <h1>Профіль користувача</h1>
+ <p>Ім'я: <%- user.name %></p>
+ <p>Email: <%- user.email %></p>
+ <p>Роль: <%- user.role %></p>
+ <p>Дата реєстрації: <%- new Date(user.registrationDate).toLocaleDateString() %></p>
+ <p><a href="/">На головну</a></p>
+ <p><a href="/auth/logout">Увійти</a></p>
+</div>
+ </main>
+ <%- include ("./partials/footer.ejs") %>
+</html>

@@ -1,0 +1,20 @@
+<%- include ("./partials/head") %>
+<body>
+  
+  <main  class="container">
+	<%- include ("./partials/header") %>
+		<div class="wrapper">
+		<h1>Профіль користувача</h1>
+		<p><strong>Ім'я:</strong> <%= user.name %></p>
+		  <p><strong>Email:</strong> <%= user.email %></p>
+		  <p><strong>Дата реєстрації:</strong> <%= user.registrationDate %></p>
+		  <h2>Графік перегляду фільмів</h2>
+		  <div id="chart">
+		  <!-- Сюди можна додати графік за допомогою JavaScript -->
+		  </div>
+		  </div>
+  </main>
+  <% include ./partials/footer.ejs %>
+</body>
+</html>
+

@@ -1,0 +1,73 @@
+<%- include ("./partials/head") %>
+
+<body>
+<main class="container admin">
+  <%- include ("./partials/header") %>
+  <div class="wrapper">
+    <h1>Адмінпанель</h1>
+
+    <div class="dashboard">
+      <ul class="tabs">
+        <li class="active" data-target="add-movie"><a href="#add-movie">Додавання фільму</a></li>
+        <li data-target="user-list"><a href="#user-list">Список користувачів</a></li>
+      </ul>
+
+      <section id="add-movie" class="active add-movie" >
+        <h2>Додавання фільму</h2>
+        <form action="/admin/add-movie" method="POST">
+          <label for="title">Назва:</label>
+          <input type="text" id="title" name="title" required>
+          <br>
+          <label for="description">Опис:</label>
+          <textarea id="description" name="description" required></textarea>
+          <br>
+          <label for="releaseDate">Дата виходу:</label>
+          <input type="date" id="releaseDate" name="releaseDate" required>
+          <br>
+          <button type="submit">Додати фільм</button>
+        </form>
+      </section>
+
+      <section id="user-list">
+        <h2>Список користувачів</h2>
+        <table border="1">
+          <tr>
+            <th>Ім'я</th>
+            <th>Email</th>
+            <th>Роль</th>
+            <th>Дата реєстрації</th>
+          </tr>
+          <% users.forEach(function(user) { %>
+          <tr>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.role %></td>
+            <td><%= new Date(user.registrationDate).toLocaleDateString() %></td>
+          </tr>
+          <% }); %>
+        </table>
+      </section>
+    </div>
+  </div>
+</main>
+<%- include ("./partials/footer.ejs") %>
+<script>
+  const tabs = document.querySelectorAll('.tabs li');
+  const sections = document.querySelectorAll('.dashboard section');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const targetId = tab.dataset.target;
+
+      // Убираем активный класс со всех табов и секций
+      tabs.forEach(tab => tab.classList.remove('active'));
+      sections.forEach(section => section.classList.remove('active'));
+
+      // Добавляем активный класс к текущему табу и секции
+      tab.classList.add('active');
+      document.getElementById(targetId).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

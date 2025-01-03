@@ -1,0 +1,60 @@
+<%- include ("./partials/head") %>
+<body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <main class="container home">
+    <%- include ("./partials/header") %>
+	<div class="wrapper">
+	
+		<h1>Список аніме фільмів</h1>
+		 <ul class="films">
+		 <% movies.forEach(movie => {%>
+		 <li>
+		 <h3><%= movie.title %><span title="рік випуску (<%= movie.releaseYear %>)">(<%= movie.releaseYear %>)</span></h3>
+		 <p><%= movie.description %></p>
+		 <% if (user) {%>
+			 <label class="label">
+			 <input
+				 type="checkbox"
+				 class="watched-checkbox"
+				 data-movie-id="<%= movie.id %>"
+				 <%= watchedMovies.includes(movie.id) ? 'checked' : '' %>
+			 >
+			 Переглянути
+			 </label>
+		 <%}else{ %>
+		 <a href="/auth/login" class="label" title="додати в свій список перегляду">
+			Додати
+		 </a>
+		 <%} %>
+		 </li>
+		 <%}); %>
+		 </ul>
+
+		 
+	</div>
+  </main>
+  <%- include ("./partials/footer.ejs") %>
+  
+  <script>
+        $(document).ready(function () {
+            $('.watched-checkbox').on('change', function () {
+                const movieId = $(this).data('movie-id');
+                const isWatched = $(this).is(':checked');
+
+                $.ajax({
+                    url: '/api/movies/watched',
+                    method: 'POST',
+                    data: { movieId, isWatched },
+                    success: () => {
+                        console.log('Збережено!');
+                    },
+                    error: (err) => {
+                        console.error('Помилка:', err);
+                        alert('Помилка збереження.');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

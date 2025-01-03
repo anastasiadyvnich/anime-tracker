@@ -1,0 +1,28 @@
+<%- include ("./partials/head") %>
+<body>
+
+ <main class="container">
+ <%- include ("./partials/header") %>
+ <div class="wrapper">
+ <h1>Админка</h1>
+ <h2>Додавання фільмів</h2>
+ <form action="/admin/add-movie" method="POST">
+ <label for="title">Назва:</label>
+ <input type="text" id="title" name="title" required />
+ <label for="description">Опис:</label>
+ <textarea id="description" name="description"></textarea>
+ <label for="releaseYear">Рік випуску:</label>
+ <input type="number" id="releaseYear" name="releaseYear" required />
+ <button type="submit">Додати</button>
+ </form>
+ <h2>Список користувачів</h2>
+ <ul>
+ <%- users.forEach(user => { %>
+ <li><%- user.name %> - <%= user.email %> (<%= user.role %>)</li>
+ <%- }) %>
+ </ul>
+  </div>
+ </main>
+ <%- include ("./partials/footer.ejs") %>
+</body>
+</html>
