@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"No tests but that is ok\""
+    "format:check": "npx prettier --check \"**/*.{js,json,css,html}\"",
+    "lint": "npx eslint .",
+    "test": "echo \"No tests but that is ok\"",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
