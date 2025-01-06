@@ -1,5 +1,5 @@
 const sqlite3 = require("sqlite3").verbose();
-const MovieModel = require("./models/MovieModel");
+const MovieModel = require("./models/movieModel");
 
 MovieModel.createTable();
 MovieModel.createWatchedTable();

@@ -1,4 +1,4 @@
-const MovieModel = require("../models/MovieModel");
+const MovieModel = require("../models/movieModel");
 
 exports.getHomePage = async (req, res) => {
   try {
