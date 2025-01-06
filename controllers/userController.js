@@ -1,4 +1,4 @@
-const UserModel = require("../models/UserModel");
+const UserModel = require("../models/userModel");
 
 exports.getRegisterPage = (req, res) => {
   res.render("register", { title: "Реєстрація" });

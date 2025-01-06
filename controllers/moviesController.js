@@ -1,4 +1,4 @@
-const MovieModel = require("../models/MovieModel");
+const MovieModel = require("../models/movieModel");
 
 exports.toggleWatchedStatus = async (req, res) => {
   const { movieId, isWatched } = req.body;

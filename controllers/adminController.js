@@ -1,5 +1,5 @@
-const UserModel = require("../models/UserModel");
-const MovieModel = require("../models/MovieModel");
+const UserModel = require("../models/userModel");
+const MovieModel = require("../models/movieModel");
 
 // Відображення адмінської панелі (список користувачів)
 exports.getDashboard = async (req, res) => {
