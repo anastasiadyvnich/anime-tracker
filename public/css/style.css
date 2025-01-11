@@ -302,3 +302,10 @@ footer {
   color: #959595;
   margin: 0 0 0 2px;
 }
+.about-img {
+  width: 32%;
+  margin: auto;
+}
+.about p {
+  font-size: 1.4em;
+}
