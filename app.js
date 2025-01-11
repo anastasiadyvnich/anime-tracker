@@ -31,6 +31,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
+// Middleware для передачі сесії до шаблонів
+
 app.use((req, res, next) => {
   if (req.session && req.session.user) {
     req.user = req.session.user;
@@ -47,6 +49,13 @@ app.use((req, res, next) => {
   req.isAuthenticated = () => !!req.user;
   next();
 });
+
+// Підключення до бази даних
+(async () => {
+  if (process.env.NODE_ENV === "test") {
+    await connect(); // Підключаємо SQLite у режимі тестування
+  }
+})();
 
 app.use("/", mainRoutes);
 app.use("/auth", authRoutes);
